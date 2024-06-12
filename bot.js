@@ -79,7 +79,7 @@ const sendNotification = async (transaction) => {
   const message = `
   **NEW DEPOSIT** in [Caked Bread](https://cakedbread.app/)!
   
-**💵 BUY**: ${valueBNB} ( ~ ${valueUSD} $)
+**💵 BUY**: ${valueBNB} BNB ( ~ ${valueUSD} $)
 
 ${breadEmojis}
 
