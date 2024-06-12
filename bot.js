@@ -77,13 +77,13 @@ const sendNotification = async (transaction) => {
   const breadEmojis = getBreadEmojis(parseFloat(valueBNB) * bnbPrice);
 
   const message = `
-  NEW DEPOSIT in [Caked Bread](https://cakedbread.app/)!
+  **NEW DEPOSIT** in [Caked Bread](https://cakedbread.app/)!
   
-💵 BUY: ${valueBNB} ( ~ ${valueUSD} $)
+**💵 BUY**: ${valueBNB} ( ~ ${valueUSD} $)
 
 ${breadEmojis}
 
-🏦 TVL: ${contractBalanceBNB} BNB ( ~ ${contractBalanceUSD} $)
+**🏦 TVL**: ${contractBalanceBNB} BNB ( ~ ${contractBalanceUSD} $)
   
 [Tx](https://bscscan.com/tx/${transaction.hash}) | [Buyer](https://bscscan.com/address/${transaction.from}) | [ Deposit here ](https://cakedbread.app/)
     `;
