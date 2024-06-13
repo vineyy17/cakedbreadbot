@@ -88,12 +88,15 @@ ${breadEmojis}
 [Tx](https://bscscan.com/tx/${transaction.hash}) | [Buyer](https://bscscan.com/address/${transaction.from}) | [ Deposit here ](https://cakedbread.app/)
     `;
 
-  const imageUrl =
-    'https://res.cloudinary.com/dqfzpmj9n/image/upload/v1718195774/photo_2024-06-12_12-15-40_keyabt.jpg';
-  await bot.telegram.sendPhoto(chatId, imageUrl, {
-    caption: message,
-    parse_mode: 'Markdown',
-  });
+  const videoPath = path.join(__dirname, 'assets', 'IMG_1786.MP4');
+  await bot.telegram.sendVideo(
+    chatId,
+    { source: videoPath },
+    {
+      caption: message,
+      parse_mode: 'Markdown',
+    },
+  );
 };
 
 const trackDeposits = async () => {
