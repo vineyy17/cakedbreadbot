@@ -4,6 +4,8 @@ import { Telegraf } from 'telegraf';
 import Web3 from 'web3';
 import fs from 'fs';
 import winston from 'winston';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -77,17 +79,19 @@ const sendNotification = async (transaction) => {
   const breadEmojis = getBreadEmojis(parseFloat(valueBNB) * bnbPrice);
 
   const message = `
-  **NEW DEPOSIT** in [Caked Bread](https://cakedbread.app/)!
+  *NEW DEPOSIT* in [Caked Bread](https://cakedbread.app/)!
   
-**💵 BUY**: ${valueBNB} BNB ( ~ ${valueUSD} $)
+*💵 BUY*: ${valueBNB} BNB ( ~ ${valueUSD} $)
 
 ${breadEmojis}
 
-**🏦 TVL**: ${contractBalanceBNB} BNB ( ~ ${contractBalanceUSD} $)
+*🏦 TVL*: ${contractBalanceBNB} BNB ( ~ ${contractBalanceUSD} $)
   
-[Tx](https://bscscan.com/tx/${transaction.hash}) | [Buyer](https://bscscan.com/address/${transaction.from}) | [ Deposit here ](https://cakedbread.app/)
-    `;
+[Tx](https://bscscan.com/tx/${transaction.hash}) | [Buyer](https://bscscan.com/address/${transaction.from}) | [Deposit here](https://cakedbread.app/)
+  `;
 
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
   const videoPath = path.join(__dirname, 'assets', 'IMG_1786.MP4');
   await bot.telegram.sendVideo(
     chatId,
